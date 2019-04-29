@@ -14,7 +14,7 @@
     <select id="selectAuthors" resultMap="Authors" parameterType="com.ncu.bookstore.entity.Authors">
         select * from authors
         <trim prefix="where" prefixOverrides="and">
-            <if test="authorID!=0">
+            <if test="authorID!=null">
                 and authorID=#{authorID,jdbcType=INTEGER}
             </if>
             <if test="authorName!=null">

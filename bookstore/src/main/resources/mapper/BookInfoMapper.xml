@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ncu.bookstore.dao.BookInfoMapper">
+
+    <resultMap id="AllBookInfo" type="com.ncu.bookstore.entity.BookInfo">
+        <id column="bookID" property="bookID" jdbcType="INTEGER" />
+        <result column="authorID" property="authorID" jdbcType="INTEGER" />
+        <result column="typeID" property="typeID" jdbcType="INTEGER"/>
+        <result column="bookName" property="bookName" jdbcType="VARCHAR"/>
+        <result column="picture" property="picture" jdbcType="VARCHAR"/>
+        <result column="price" property="price" jdbcType="DOUBLE"/>
+        <result column="isdn" property="isdn" jdbcType="VARCHAR"/>
+        <result column="bookSize" property="bookSize" jdbcType="INTEGER"/>
+        <result column="publishing" property="publishing" jdbcType="VARCHAR"/>
+        <result column="pubTime" property="pubTime" jdbcType="DATE"/>
+        <result column="page" property="page" jdbcType="INTEGER"/>
+        <result column="contentIntro" property="contentIntro" jdbcType="VARCHAR"/>
+        <result column="stockQty" property="stockQty" jdbcType="INTEGER"/>
+        <association property="authors" javaType="com.ncu.bookstore.entity.Authors">
+            <id column="authorID" property="authorID" />
+            <result column="authorName" property="authorName"/>
+            <result column="description" property="description"/>
+        </association>
+        <association property="bookType" javaType="com.ncu.bookstore.entity.BookType">
+            <id column="typeID" property="typeID"/>
+            <result column="typeName" property="typeName"/>
+        </association>
+    </resultMap>
+
+    <select id="selectAllBookInfo" resultMap="AllBookInfo">
+        select * from book_info,authors,book_type where book_info.authorID=authors.authorID and book_info.typeID=book_type.typeID
+    </select>
+
+    <select id="selectBookInfo" resultMap="AllBookInfo">
+        select * from book_info,authors,book_type where book_info.authorID=authors.authorID and book_info.typeID=book_type.typeID
+        <trim prefix="and" prefixOverrides=",">
+            <if test="bookID !=null">
+                ,bookID=#{bookID,jdbcType=INTEGER}
+            </if>
+            <if test="bookName !=null">
+                ,bookName like "%"#{bookName, jdbcType = VARCHAR}"%"
+            </if>
+        </trim>
+    </select>
+    <insert id="insertBookInfo" parameterType="com.ncu.bookstore.entity.BookInfo">
+        insert into book_info(authorID,typeID,bookName,picture,price,isdn,bookSize,publishing,pubTime,page,contentIntro,stockQty)
+        values(#{authorID,jdbcType=INTEGER},#{typeID,jdbcType=INTEGER},#{bookName,jdbcType=VARCHAR},#{picture,jdbcType=VARCHAR},
+        #{price,jdbcType=DOUBLE},#{isdn,jdbcType=VARCHAR},#{bookSize,jdbcType=INTEGER},#{publishing,jdbcType=VARCHAR},#{pubTime,jdbcType=DATE},
+        #{page,jdbcType=INTEGER},#{contentIntro,jdbcType=VARCHAR},#{stockQty,jdbcType=INTEGER})
+    </insert>
+
+    <delete id="deleteBookInfo" parameterType="com.ncu.bookstore.entity.BookInfo">
+        delete from book_info where bookID=#{bookID,jdbcType=INTEGER}
+    </delete>
+
+    <update id="updateBookInfo" parameterType="com.ncu.bookstore.entity.BookInfo">
+        update book_info
+        <trim prefix="set" prefixOverrides=",">
+            <if test="authorID != null">
+                ,authorID=#{authorID,jdbcType=INTEGER}
+            </if>
+            <if test="typeID != null">
+                ,typeID=#{typeID,jdbcType=INTEGER}
+            </if>
+            <if test="bookName !=null">
+                ,bookName=#{bookName,jdbcType=VARCHAR}
+            </if>
+            <if test="picture !=null">
+                ,picture=#{picture,jdbcType=VARCHAR}
+            </if>
+            <if test="price != null">
+                ,price=#{price,jdbcType=DOUBLE}
+            </if>
+            <if test="isdn !=null">
+                ,isdn=#{isdn,jdbcType=VARCHAR}
+            </if>
+            <if test="bookSize != null">
+                ,bookSize=#{bookSize,jdbcType=INTEGER}
+            </if>
+            <if test="publishing !=null">
+                ,publishing=#{publishing,jdbcType=VARCHAR}
+            </if>
+            <if test="pubTime !=null">
+                ,pubTime=#{pubTime,jdbcType=DATE}
+            </if>
+            <if test="page != null">
+                ,page=#{page,jdbcType=INTEGER}
+            </if>
+            <if test="contentIntro !=null">
+                ,contentIntro=#{contentIntro,jdbcType=VARCHAR}
+            </if>
+            <if test="stockQty != null">
+                ,stockQty=#{stockQty,jdbcType=INTEGER}
+            </if>
+        </trim>
+        where bookID=#{bookID,jdbcType=INTEGER}
+    </update>
+</mapper>
