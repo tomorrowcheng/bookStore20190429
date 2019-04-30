@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ncu.bookstore.dao.UserMapper">
+    <resultMap id="User" type="com.ncu.bookstore.entity.User">
+        <id column="userID" property="userID" jdbcType="INTEGER" />
+        <result column="userName" property="userName" jdbcType="VARCHAR" />
+        <result column="userPassword" property="userPassword" jdbcType="VARCHAR" />
+        <result column="birthday" property="birthday" jdbcType="DATE"/>
+        <result column="userPhoto" property="userPhoto" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectAllUser" resultMap="User">
+        select * from users
+    </select>
+
+    <select id="selectUser" resultMap="User" parameterType="com.ncu.bookstore.entity.User">
+        select * from users
+        <trim prefix="where" prefixOverrides="and">
+            <if test="userID!=null">
+                and userID=#{userID,jdbcType=INTEGER}
+            </if>
+            <if test="userName!=null">
+                and BINARY userName like  "%"#{userName, jdbcType = VARCHAR}"%"
+            </if>
+        </trim>
+    </select>
+
+    <insert id="insertUser" parameterType="com.ncu.bookstore.entity.User">
+        insert into users(userName,userPassword,birthday,userPhoto)
+        values(#{userName,jdbcType=VARCHAR},#{userPassword,jdbcType=VARCHAR},#{birthday,jdbcType=DATE},#{userPhoto,jdbcType=VARCHAR})
+    </insert>
+
+    <delete id="deleteUser" parameterType="com.ncu.bookstore.entity.User">
+        delete from users where userID=#{userID,jdbcType=INTEGER}
+    </delete>
+
+    <update id="updateUser" parameterType="com.ncu.bookstore.entity.User">
+        update users
+        <trim prefix="set" prefixOverrides=",">
+            <if test="userName != null">
+                userName=#{userName,jdbcType=VARCHAR}
+            </if>
+            <if test="userPassword != null">
+                ,userPassword=#{userPassword,jdbcType=VARCHAR}
+            </if>
+            <if test="birthday !=null">
+                ,birthday=#{birthday,jdbcType=DATE}
+            </if>
+            <if test="userPhoto !=null">
+                ,userPhoto=#{userPhoto,jdbcType=VARCHAR}
+            </if>
+        </trim>
+        where userID=#{userID,jdbcType=INTEGER}
+    </update>
+</mapper>
