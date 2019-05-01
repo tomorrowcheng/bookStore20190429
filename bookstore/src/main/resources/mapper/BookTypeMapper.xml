@@ -13,7 +13,7 @@
     <select id="selectBookType" resultMap="BookType" parameterType="com.ncu.bookstore.entity.BookType">
         select * from book_type
         <trim prefix="where" prefixOverrides="and">
-            <if test="typeID!=0">
+            <if test="typeID!=null">
                 and typeID=#{typeID,jdbcType=INTEGER}
             </if>
             <if test="typeName!=null">

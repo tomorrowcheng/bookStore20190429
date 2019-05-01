@@ -7,20 +7,28 @@
         <result column="userPassword" property="userPassword" jdbcType="VARCHAR" />
         <result column="birthday" property="birthday" jdbcType="DATE"/>
         <result column="userPhoto" property="userPhoto" jdbcType="VARCHAR"/>
+        <collection property="recInfo" ofType="com.ncu.bookstore.entity.RecInfo">
+            <id column="recID" property="recID"/>
+            <result column="userID" property="userID"/>
+            <result column="address" property="address"/>
+            <result column="postcode" property="postcode"/>
+            <result column="linkman" property="linkman"/>
+            <result column="tel" property="tel"/>
+        </collection>
     </resultMap>
 
     <select id="selectAllUser" resultMap="User">
-        select * from users
+        select * from users,rec_info where users.userID=rec_info.userID
     </select>
 
     <select id="selectUser" resultMap="User" parameterType="com.ncu.bookstore.entity.User">
-        select * from users
-        <trim prefix="where" prefixOverrides="and">
+        select * from users,rec_info where users.userID=rec_info.userID
+        <trim prefix="and" prefixOverrides=",">
             <if test="userID!=null">
-                and userID=#{userID,jdbcType=INTEGER}
+                ,userID=#{userID,jdbcType=INTEGER}
             </if>
             <if test="userName!=null">
-                and BINARY userName like  "%"#{userName, jdbcType = VARCHAR}"%"
+                ,userName like  "%"#{userName, jdbcType = VARCHAR}"%"
             </if>
         </trim>
     </select>

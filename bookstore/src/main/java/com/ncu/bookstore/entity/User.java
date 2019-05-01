@@ -1,6 +1,7 @@
 package com.ncu.bookstore.entity;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Tomorrow on 2019/4/30/030
@@ -11,6 +12,15 @@ public class User {
     private String userPassword;
     private Date birthday;
     private String userPhoto;
+    private List<RecInfo> recInfo;
+
+    public List<RecInfo> getRecInfo() {
+        return recInfo;
+    }
+
+    public void setRecInfo(List<RecInfo> recInfo) {
+        this.recInfo = recInfo;
+    }
 
     public User() {
     }

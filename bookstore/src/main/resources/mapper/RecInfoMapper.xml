@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ncu.bookstore.dao.RecInfoMapper">
+    <resultMap id="RecInfo" type="com.ncu.bookstore.entity.RecInfo">
+        <id column="recID" property="recID" jdbcType="INTEGER"/>
+        <result column="userID" property="userID" jdbcType="INTEGER"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="postcode" property="postcode" jdbcType="VARCHAR"/>
+        <result column="linkman" property="linkman" jdbcType="VARCHAR"/>
+        <result column="tel" property="tel" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectRecInfo" resultMap="RecInfo" parameterType="com.ncu.bookstore.entity.RecInfo">
+        select * from rec_info
+        <trim prefix="where" prefixOverrides="and">
+            <if test="recID!=null">
+                and recID=#{recID,jdbcType=INTEGER}
+            </if>
+        </trim>
+    </select>
+
+    <insert id="insertRecInfo" parameterType="com.ncu.bookstore.entity.RecInfo">
+        insert into rec_info(userID,address,postcode,linkman,tel)
+        values(#{userID,jdbcType=INTEGER},#{address,jdbcType=VARCHAR},#{postcode,jdbcType=VARCHAR},#{linkman,jdbcType=VARCHAR},#{tel,jdbcType=VARCHAR})
+    </insert>
+
+    <delete id="deleteRecInfo" parameterType="com.ncu.bookstore.entity.RecInfo">
+        delete from rec_info where recID=#{recID,jdbcType=INTEGER}
+    </delete>
+
+    <update id="updateRecInfo" parameterType="com.ncu.bookstore.entity.RecInfo">
+        update rec_info
+        <trim prefix="set" prefixOverrides=",">
+            <if test="address != null">
+                ,address=#{address,jdbcType=VARCHAR}
+            </if>
+            <if test="postcode != null">
+                ,postcode=#{postcode,jdbcType=VARCHAR}
+            </if>
+            <if test="linkman != null">
+                ,linkman=#{linkman,jdbcType=VARCHAR}
+            </if>
+            <if test="tel != null">
+                ,tel=#{tel,jdbcType=VARCHAR}
+            </if>
+        </trim>
+        where recID=#{recID,jdbcType=INTEGER}
+    </update>
+</mapper>
