@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ncu.bookstore.dao.ShoppingMapper">
+    <resultMap id="Shopping" type="com.ncu.bookstore.entity.Shopping">
+        <id column="shoppingID" property="shoppingID" jdbcType="INTEGER"/>
+        <result column="userID" property="userID" jdbcType="INTEGER"/>
+        <result column="bookID" property="bookID" jdbcType="INTEGER"/>
+        <result column="number" property="number" jdbcType="INTEGER"/>
+        <association property="bookInfo" javaType="com.ncu.bookstore.entity.BookInfo">
+            <id column="bookID" property="bookID"/>
+            <result column="authorID" property="authorID"/>
+            <result column="bookName" property="bookName"/>
+            <result column="picture" property="picture"/>
+            <result column="price" property="price"/>
+        </association>
+        <association property="authors" javaType="com.ncu.bookstore.entity.Authors">
+            <id column="authorID" property="authorID"/>
+            <result column="authorName" property="authorName"/>
+        </association>
+    </resultMap>
+
+    <select id="selectShopping" resultMap="Shopping">
+        select shopping.*,b.authorID,b.bookName,b.picture,b.price,a.authorID,a.authorName from shopping,book_info b,authors a where shopping.bookID=b.bookID and b.authorID=a.authorID
+        <trim prefix="and" prefixOverrides=",">
+            <if test="userID!=null">
+                ,userID=#{userID,jdbcType=INTEGER}
+            </if>
+        </trim>
+    </select>
+
+    <insert id="insertShopping" parameterType="com.ncu.bookstore.entity.Shopping">
+        insert into shopping(userID,bookID,number)
+        values(#{userID,jdbcType=INTEGER},#{bookID,jdbcType=INTEGER},#{number,jdbcType=INTEGER})
+    </insert>
+
+    <delete id="deleteShopping" parameterType="com.ncu.bookstore.entity.Shopping">
+        delete from shopping where shoppingID=#{shoppingID,jdbcType=INTEGER}
+    </delete>
+
+    <update id="updateShopping" parameterType="com.ncu.bookstore.entity.Shopping">
+        update shopping
+        <trim prefix="set" prefixOverrides=",">
+            <if test="number!=0">
+                ,number=#{number,jdbcType=INTEGER}
+            </if>
+        </trim>
+        where shoppingID=#{shoppingID,jdbcType=INTEGER}
+    </update>
+</mapper>

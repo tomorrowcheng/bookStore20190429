@@ -7,16 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="948ba4eb-914e-4129-8fb2-742aa2646001" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/controller/RecInfoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/dao/RecInfoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/entity/RecInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/RecInfoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/serviceImp/RecInfoServiceImp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/RecInfoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/controller/ShoppingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/dao/ShoppingMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/entity/Shopping.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/ShoppingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/serviceImp/ShoppingServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/ShoppingMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/BookTypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/BookTypeMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -81,40 +78,49 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="86" />
-          <entry key="xml" value="42" />
+          <entry key="java" value="102" />
+          <entry key="xml" value="50" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="86" />
-          <entry key="XML" value="42" />
+          <entry key="JAVA" value="102" />
+          <entry key="XML" value="50" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="3118" />
-          <entry key="txt" value="82" />
-          <entry key="xml" value="4284" />
+          <entry key="java" value="4105" />
+          <entry key="txt" value="113" />
+          <entry key="xml" value="5465" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3118" />
-          <entry key="PLAIN_TEXT" value="82" />
-          <entry key="SQL" value="32" />
-          <entry key="XML" value="4252" />
+          <entry key="JAVA" value="4105" />
+          <entry key="PLAIN_TEXT" value="113" />
+          <entry key="SQL" value="44" />
+          <entry key="XML" value="5421" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/controller/RecInfoController.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ShoppingMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1053">
-              <caret line="39" column="37" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
+            <state relative-caret-position="756">
+              <caret line="46" column="54" selection-start-line="46" selection-start-column="54" selection-end-line="46" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/dao/ShoppingMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="12" column="42" selection-start-line="10" selection-start-column="4" selection-end-line="12" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -123,19 +129,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/RecInfoMapper.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/ShoppingService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="17" column="17" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/RecInfoService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="7" column="39" lean-forward="true" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+            <state relative-caret-position="216">
+              <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -144,32 +141,33 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/serviceImp/RecInfoServiceImp.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/serviceImp/ShoppingServiceImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
-              <caret line="33" column="13" lean-forward="true" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+            <state relative-caret-position="643">
+              <caret line="30" column="53" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#525#526#0" expanded="true" />
-                <element signature="e#584#585#0" expanded="true" />
+                <element signature="e#557#558#0" expanded="true" />
+                <element signature="e#581#582#0" expanded="true" />
                 <element signature="e#647#648#0" expanded="true" />
-                <element signature="e#706#707#0" expanded="true" />
-                <element signature="e#769#770#0" expanded="true" />
-                <element signature="e#828#829#0" expanded="true" />
-                <element signature="e#925#926#0" expanded="true" />
-                <element signature="e#952#953#0" expanded="true" />
+                <element signature="e#671#672#0" expanded="true" />
+                <element signature="e#737#738#0" expanded="true" />
+                <element signature="e#761#762#0" expanded="true" />
+                <element signature="e#525#526#0" expanded="true" />
+                <element signature="e#552#553#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/dao/RecInfoMapper.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/controller/ShoppingController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="13" column="49" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+            <state relative-caret-position="100">
+              <caret line="61" column="53" selection-start-line="61" selection-start-column="53" selection-end-line="61" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#selectShopping#0;class#ShoppingController#0" />
               </folding>
             </state>
           </provider>
@@ -200,8 +198,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/spring-mybatis.xml" />
@@ -238,7 +234,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/entity/User.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/serviceImp/UserServiceImp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/dao/UserMapper.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/BookTypeMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/RecInfoMapper.xml" />
@@ -247,6 +242,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/dao/RecInfoMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/serviceImp/RecInfoServiceImp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/controller/RecInfoController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/entity/Shopping.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/ShoppingMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/dao/ShoppingMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/ShoppingService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/serviceImp/ShoppingServiceImp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ncu/bookstore/controller/ShoppingController.java" />
       </list>
     </option>
   </component>
@@ -277,10 +279,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="120" />
-    <option name="y" value="28" />
-    <option name="width" value="1185" />
-    <option name="height" value="684" />
+    <option name="x" value="48" />
+    <option name="width" value="1386" />
+    <option name="height" value="735" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -325,6 +326,21 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="bookstore" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bookstore" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bookstore" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bookstore" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -334,7 +350,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556682088573" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556701941516" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../portal" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -518,7 +534,7 @@
       <workItem from="1556509354100" duration="15177000" />
       <workItem from="1556542366070" duration="7649000" />
       <workItem from="1556587055603" duration="20265000" />
-      <workItem from="1556678888834" duration="3334000" />
+      <workItem from="1556678888834" duration="13349000" />
     </task>
     <task id="LOCAL-00001" summary="给Authors、BookType增加id查询">
       <created>1556519132735</created>
@@ -541,16 +557,23 @@
       <option name="project" value="LOCAL" />
       <updated>1556595152033</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="RecInfo:添加收货信息rec_info的增删改查">
+      <created>1556682309448</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1556682309449</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55715000" />
+    <option name="totallyTimeSpent" value="65730000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26626325" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28139183" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -620,51 +643,10 @@
     <MESSAGE value="给Authors、BookType增加id查询" />
     <MESSAGE value="BookInfo：添加BookInfo的增删改查" />
     <MESSAGE value="User:添加user的增删改查" />
-    <option name="LAST_COMMIT_MESSAGE" value="User:添加user的增删改查" />
+    <MESSAGE value="RecInfo:添加收货信息rec_info的增删改查" />
+    <option name="LAST_COMMIT_MESSAGE" value="RecInfo:添加收货信息rec_info的增删改查" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/TestMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/dao/TestMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/controller/TestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="15" column="11" lean-forward="true" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/TestService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/entity/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="50" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -733,13 +715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1596">
           <caret line="130" column="13" selection-start-line="130" selection-start-column="13" selection-end-line="130" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/AdminService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -841,13 +816,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/controller/AdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-481">
-          <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/AdminMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-54">
@@ -859,6 +827,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
           <caret line="13" column="25" lean-forward="true" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+          <folding>
+            <element signature="e#625#626#0" expanded="true" />
+            <element signature="e#655#656#0" expanded="true" />
+            <element signature="e#1378#1379#0" expanded="true" />
+            <element signature="e#1409#1410#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -866,20 +840,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="373">
           <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/serviceImp/UserServiceImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -901,13 +861,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-270">
-          <caret line="2" column="53" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/BookTypeMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
@@ -922,18 +875,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/BookInfoMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="n#insert#0;n#mapper#0;n#!!top" />
-            <element signature="n#delete#0;n#mapper#0;n#!!top" />
-            <element signature="n#update#0;n#mapper#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/BookTypeService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -941,17 +882,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="753">
+          <caret line="75" column="18" selection-start-line="75" selection-start-column="18" selection-end-line="75" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/controller/RecInfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1053">
+          <caret line="39" column="37" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/RecInfoMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
-          <caret line="17" column="17" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/serviceImp/RecInfoServiceImp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
-          <caret line="33" column="13" lean-forward="true" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#525#526#0" expanded="true" />
@@ -978,30 +939,162 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/RecInfoService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="7" column="39" lean-forward="true" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+        <state relative-caret-position="181">
+          <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/controller/UserController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="753">
-          <caret line="75" column="18" selection-start-line="75" selection-start-column="18" selection-end-line="75" selection-end-column="18" />
+        <state relative-caret-position="343">
+          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/controller/RecInfoController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1053">
-          <caret line="39" column="37" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
+        <state relative-caret-position="324">
+          <caret line="30" column="69" lean-forward="true" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/serviceImp/UserServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="891">
+          <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#942#943#0" expanded="true" />
+            <element signature="e#992#993#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/entity/Shopping.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1512">
+          <caret line="56" column="33" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
+          <folding>
+            <element signature="e#289#290#0" expanded="true" />
+            <element signature="e#322#323#0" expanded="true" />
+            <element signature="e#375#376#0" expanded="true" />
+            <element signature="e#419#420#0" expanded="true" />
+            <element signature="e#453#454#0" expanded="true" />
+            <element signature="e#482#483#0" expanded="true" />
+            <element signature="e#527#528#0" expanded="true" />
+            <element signature="e#563#564#0" expanded="true" />
+            <element signature="e#597#598#0" expanded="true" />
+            <element signature="e#626#627#0" expanded="true" />
+            <element signature="e#671#672#0" expanded="true" />
+            <element signature="e#707#708#0" expanded="true" />
+            <element signature="e#741#742#0" expanded="true" />
+            <element signature="e#770#771#0" expanded="true" />
+            <element signature="e#815#816#0" expanded="true" />
+            <element signature="e#851#852#0" expanded="true" />
+            <element signature="e#888#889#0" expanded="true" />
+            <element signature="e#919#920#0" expanded="true" />
+            <element signature="e#969#970#0" expanded="true" />
+            <element signature="e#1009#1010#0" expanded="true" />
+            <element signature="e#1134#1135#0" expanded="true" />
+            <element signature="e#1181#1182#0" expanded="true" />
+            <element signature="e#1219#1220#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/BookInfoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1049">
+          <caret line="4" column="72" selection-start-line="4" selection-start-column="72" selection-end-line="4" selection-end-column="72" />
+          <folding>
+            <element signature="n#resultMap#0;n#mapper#0;n#!!top" />
+            <element signature="n#select#0;n#mapper#0;n#!!top" />
+            <element signature="n#select#1;n#mapper#0;n#!!top" />
+            <element signature="n#insert#0;n#mapper#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ShoppingMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="46" column="54" selection-start-line="46" selection-start-column="54" selection-end-line="46" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/AdminService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/ShoppingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/dao/ShoppingMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="12" column="42" selection-start-line="10" selection-start-column="4" selection-end-line="12" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/service/serviceImp/ShoppingServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="643">
+          <caret line="30" column="53" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#557#558#0" expanded="true" />
+            <element signature="e#581#582#0" expanded="true" />
+            <element signature="e#647#648#0" expanded="true" />
+            <element signature="e#671#672#0" expanded="true" />
+            <element signature="e#737#738#0" expanded="true" />
+            <element signature="e#761#762#0" expanded="true" />
+            <element signature="e#525#526#0" expanded="true" />
+            <element signature="e#552#553#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/controller/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-19">
+          <caret line="26" column="81" selection-start-line="26" selection-start-column="81" selection-end-line="26" selection-end-column="81" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#insertAdmin#0;class#AdminController#0" />
+            <element signature="method#selectAllAdmin#0;class#AdminController#0" />
+            <element signature="method#selectAdmin#0;class#AdminController#0" />
+            <element signature="method#deleteAdmin#0;class#AdminController#0" />
+            <element signature="method#updateAdmin#0;class#AdminController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ncu/bookstore/controller/ShoppingController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="61" column="53" selection-start-line="61" selection-start-column="53" selection-end-line="61" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#selectShopping#0;class#ShoppingController#0" />
           </folding>
         </state>
       </provider>
