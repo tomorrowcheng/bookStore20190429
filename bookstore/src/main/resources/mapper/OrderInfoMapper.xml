@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ncu.bookstore.dao.OrderInfoMapper">
+    <resultMap id="OrderInfo" type="com.ncu.bookstore.entity.OrderInfo">
+        <id column="orderID" property="orderID" jdbcType="INTEGER"/>
+        <result column="userID" property="userID" jdbcType="INTEGER"/>
+        <result column="bookID" property="bookID" jdbcType="INTEGER"/>
+        <result column="recID" property="recID" jdbcType="INTEGER"/>
+        <result column="orderNumber" property="orderNumber" jdbcType="INTEGER"/>
+        <result column="expNum" property="expNum" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <association property="bookInfo" javaType="com.ncu.bookstore.entity.BookInfo">
+            <id column="bookID" property="bookID"/>
+            <result column="authorID" property="authorID"/>
+            <result column="bookName" property="bookName"/>
+            <result column="picture" property="picture"/>
+            <result column="price" property="price"/>
+        </association>
+        <association property="authors" javaType="com.ncu.bookstore.entity.Authors">
+            <id column="authorID" property="authorID"/>
+            <result column="authorName" property="authorName"/>
+        </association>
+        <association property="recInfo" javaType="com.ncu.bookstore.entity.RecInfo">
+            <id column="recID" property="recID"/>
+            <result column="address" property="address"/>
+            <result column="postcode" property="postcode"/>
+            <result column="linkman" property="linkman"/>
+            <result column="tel" property="tel"/>
+        </association>
+    </resultMap>
+    <select id="selectOrderInfo" resultMap="OrderInfo">
+        select * from order_info,book_info,authors,rec_info
+        where order_info.bookID=book_info.bookID and book_info.authorID=authors.authorID and order_info.recID=rec_info.recID
+        <trim prefix="and" prefixOverrides=",">
+            <if test="userID!=null">
+                ,order_info.userID=#{userID,jdbcType=INTEGER}
+            </if>
+            <if test="orderID!=null">
+                ,orderID=#{orderID,jdbcType=INTEGER}
+            </if>
+        </trim>
+    </select>
+
+    <insert id="insertOrderInfo" parameterType="com.ncu.bookstore.entity.OrderInfo">
+        insert into order_info(userID,bookID,recID,orderNumber,expNum,status)
+        values(#{userID,jdbcType=INTEGER},#{bookID,jdbcType=INTEGER},#{recID,jdbcType=INTEGER},
+        #{orderNumber,jdbcType=INTEGER},#{expNum,jdbcType=VARCHAR},#{status,jdbcType=INTEGER})
+    </insert>
+
+    <update id="updateOrderInfo" parameterType="com.ncu.bookstore.entity.OrderInfo">
+        update order_info
+        <trim prefix="set" prefixOverrides=",">
+            <if test="recID!=null">
+                ,recID=#{recID,jdbcType=INTEGER}
+            </if>
+            <if test="orderNumber!=0">
+                ,orderNumber=#{orderNumber,jdbcType=INTEGER}
+            </if>
+            <if test="expNum!=null">
+                ,expNum=#{expNum,jdbcType=VARCHAR}
+            </if>
+            <if test="status">
+                ,status=#{status,jdbcType=INTEGER}
+            </if>
+        </trim>
+        where orderID=#{orderID,jdbcType=INTEGER}
+    </update>
+
+    <delete id="deleteOrderInfo" parameterType="com.ncu.bookstore.entity.OrderInfo">
+        delete from order_info where orderID=#{orderID,jdbcType=INTEGER}
+    </delete>
+</mapper>
