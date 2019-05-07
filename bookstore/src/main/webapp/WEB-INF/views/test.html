@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <title>test</title>
+    <script type="text/javascript">
+        function showPreview(source) {
+            var file = source.files[0];
+            if(window.FileReader) {
+                var fr = new FileReader();
+                console.log(fr);
+                var portrait = document.getElementById('portrait');
+                fr.onloadend = function(e) {
+                    portrait.src = e.target.result;
+                };
+                fr.readAsDataURL(file);
+                portrait.style.display = 'block';
+            }
+        }
+        function userAdd(){
+            var formData=new FormData();
+            var file=document.getElementById("file").files[0];
+            formData.append("file",file);
+            var userName=$("#userName").val();
+            var userPassword=$("#userPassword").val();
+            var birthday=$("#birthday").val();
+            var myData=JSON.stringify({"userName":userName,"userPassword":userPassword,"birthday":birthday,"userPhoto":""});
+            formData.append("user",new Blob([myData],{type:"application/json"}));
+            $.ajax({
+                type:"POST",
+                url:"http://localhost:8080/user/insertUser",
+                dataType:"json",
+                contentType:false,
+                crossDomain:true,
+                processData:false,
+                data:formData,
+                success:function(data){
+                   console.log(data);
+                },
+                error:function(){
+                    alert("添加设备类别失败")
+                }
+            });
+        }
+    </script>
+    <script src="../js/jquery-3.3.1.js"></script>
+</head>
+<body>
+<h1>添加用户</h1>
+<div>
+    用户名称：
+    <input type="text" id="userName"/><br/><br/>
+    <input type="password" id="userPassword"/><br/><br/>
+    <input type="date" id="birthday"/><br/><br/>
+    图片：
+    <input type="file" id="file" name="file" onchange="showPreview(this)" /><br/><br/>
+    <img id="portrait" src="" style="display:none;width: 100px;height:100px;" /><br/><br/>
+    <span onclick="userAdd()">添加</span>
+</div>
+</body>
+</html>

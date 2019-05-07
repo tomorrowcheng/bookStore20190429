@@ -1,0 +1,9 @@
+.type{
+    float:none;
+    margin-top: -20px;
+    margin-left: 10px;
+}
+.type>li>a{
+    padding:0;
+    margin: 5px;
+}
