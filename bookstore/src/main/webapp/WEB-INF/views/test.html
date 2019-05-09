@@ -29,7 +29,7 @@
             formData.append("user",new Blob([myData],{type:"application/json"}));
             $.ajax({
                 type:"POST",
-                url:"http://localhost:8080/user/insertUser",
+                url:"http://localhost:8080/user/updateUser",
                 dataType:"json",
                 contentType:false,
                 crossDomain:true,
@@ -43,20 +43,71 @@
                 }
             });
         }
+        function bookInfoAdd(){
+            var formData=new FormData();
+            var file=document.getElementById("file").files[0];
+            formData.append("file",file);
+            // var authorID=$("#authorID").val();
+            // var typeID=$("#typeID").val();
+            var bookName=$("#bookName").val();
+            // var price=$("#price").val();
+            var isdn=$("#isdn").val();
+            // var bookSize=$("#bookSize").val();
+            var contentIntro=$("#contentIntro").val();
+            // var stockQty=$("#stockQty").val();
+            var myData=JSON.stringify({
+                "authorID":1,
+                "typeID":2,
+                "bookName":bookName,
+                "picture":"",
+                "price":23.2,
+                "isdn":isdn,
+                "bookSize":16,
+                "publishing":"",
+                "pubTime":"",
+                "page":"",
+                "contentIntro":contentIntro,
+                "stockQty":2
+            });
+            formData.append("bookInfo",new Blob([myData],{type:"application/json"}));
+            $.ajax({
+                type:"POST",
+                url:"http://localhost:8080/bookInfo/insertBookInfo",
+                dataType:"json",
+                contentType:false,
+                crossDomain:true,
+                processData:false,
+                data:formData,
+                success:function(data){
+                    console.log(data);
+                },
+                error:function(){
+                    alert("添加图书失败")
+                }
+            });
+        }
     </script>
     <script src="../js/jquery-3.3.1.js"></script>
 </head>
 <body>
 <h1>添加用户</h1>
 <div>
-    用户名称：
-    <input type="text" id="userName"/><br/><br/>
-    <input type="password" id="userPassword"/><br/><br/>
-    <input type="date" id="birthday"/><br/><br/>
+    <!--用户名称：-->
+    <!--<input type="text" id="userName"/><br/><br/>-->
+    <!--<input type="password" id="userPassword"/><br/><br/>-->
+    <!--<input type="date" id="birthday"/><br/><br/>-->
+    作者：<input type="number" id="authorID"/></br></br>
+    类型：<input type="number" id="typeID"/></br></br>
+    图书名字：<input type="text" id="bookName"/></br></br>
+    价格:<input type="number" id="price"/></br></br>
+    isdn：<input type="text" id="isdn"/></br></br>
+    尺寸：<input type="number" id="bookSize"/></br></br>
+    内容简介：<input type="text" id="contentIntro"/></br></br>
+    库存数量：<input type="number" id="stockQty"/></br></br>
     图片：
     <input type="file" id="file" name="file" onchange="showPreview(this)" /><br/><br/>
     <img id="portrait" src="" style="display:none;width: 100px;height:100px;" /><br/><br/>
-    <span onclick="userAdd()">添加</span>
+    <span onclick="bookInfoAdd()">添加</span>
 </div>
 </body>
 </html>

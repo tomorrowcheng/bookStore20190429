@@ -4,12 +4,12 @@ import com.ncu.bookstore.entity.BookInfo;
 import com.ncu.bookstore.service.BookInfoService;
 import com.ncu.bookstore.util.Common;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
 
@@ -23,8 +23,15 @@ public class BookInfoController {
     @Resource
     private BookInfoService bookInfoService;
 
-    @RequestMapping(value="/insertBookInfo",method = RequestMethod.POST)
-    public @ResponseBody Map<String,Object> insertBookInfo(@RequestBody BookInfo bookInfo){
+    @RequestMapping(value="/insertBookInfo",method = RequestMethod.POST,consumes = {"multipart/form-data"})
+    public @ResponseBody Map<String,Object> insertBookInfo(@RequestPart("bookInfo") BookInfo bookInfo, @RequestPart("file") MultipartFile file,  HttpServletResponse response){
+        response.setHeader("Access-Control-Allow-Origin","*");
+        response.setHeader("Cache-Control","no-cache");
+        //String filePath = request.getSession().getServletContext().getRealPath("/upload");//定义图片上传后的路径
+        String filePath="D:/ideatest/bookStore20190429/bookstore/src/main/webapp/upload";
+        String newFileName = Common.fileOperate(file,filePath);
+        String imgPath="/upload/"+newFileName;
+        bookInfo.setPicture(imgPath);
         int i=bookInfoService.insertBookInfo(bookInfo);
         if(i==1) {
             return Common.getRes(null,1000,"success");
@@ -57,7 +64,9 @@ public class BookInfoController {
     }
 
     @RequestMapping(value="/selectAllBookInfo",method=RequestMethod.POST)
-    public @ResponseBody Map<String,Object> selectAllBookInfo(){
+    public @ResponseBody Map<String,Object> selectAllBookInfo(HttpServletResponse response){
+        response.setHeader("Access-Control-Allow-Origin","*");
+        response.setHeader("Cache-Control","no-cache");
         List<BookInfo> bookInfoList=bookInfoService.selectAllBookInfo();
         if(!bookInfoList.isEmpty()){
             return Common.getRes(bookInfoList,1000,"success");
@@ -66,7 +75,9 @@ public class BookInfoController {
         }
     }
     @RequestMapping(value="/selectBookInfo",method = RequestMethod.POST)
-    public @ResponseBody Map<String,Object> selectBookInfo(@RequestBody BookInfo bookInfo){
+    public @ResponseBody Map<String,Object> selectBookInfo(@RequestBody BookInfo bookInfo,HttpServletResponse response){
+        response.setHeader("Access-Control-Allow-Origin","*");
+        response.setHeader("Cache-Control","no-cache");
         List<BookInfo> bookInfoList=bookInfoService.selectBookInfo(bookInfo);
         if(!bookInfoList.isEmpty()){
             return Common.getRes(bookInfoList,1000,"success");

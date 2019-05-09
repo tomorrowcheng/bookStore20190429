@@ -40,6 +40,9 @@
             <if test="bookName !=null">
                 ,bookName like "%"#{bookName, jdbcType = VARCHAR}"%"
             </if>
+            <if test="typeID!=null">
+                ,book_info.typeID=#{typeID,jdbcType=INTEGER}
+            </if>
         </trim>
     </select>
     <insert id="insertBookInfo" parameterType="com.ncu.bookstore.entity.BookInfo">

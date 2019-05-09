@@ -34,7 +34,7 @@ public class UserController {
 		//String filePath = request.getSession().getServletContext().getRealPath("/upload");//定义图片上传后的路径
         String filePath="D:/ideatest/bookStore20190429/bookstore/src/main/webapp/upload";
         String newFileName = Common.fileOperate(file,filePath);
-        String imgPath=filePath+"/"+newFileName;
+        String imgPath="/upload/"+newFileName;
 		user.setUserPhoto(imgPath);
 		System.out.println("最后的user:"+user);
         int i=userService.insertUser(user);
