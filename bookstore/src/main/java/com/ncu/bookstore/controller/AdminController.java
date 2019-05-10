@@ -4,10 +4,7 @@ import com.ncu.bookstore.entity.Admin;
 import com.ncu.bookstore.service.AdminService;
 import com.ncu.bookstore.util.Common;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +13,7 @@ import java.util.Map;
 /**
  * Created by Tomorrow on 2019/4/29/029
  */
+@CrossOrigin
 @Controller
 @RequestMapping("/admin")
 public class AdminController {

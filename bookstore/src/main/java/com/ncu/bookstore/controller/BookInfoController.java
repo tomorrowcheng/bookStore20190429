@@ -16,6 +16,7 @@ import java.util.Map;
 /**
  * Created by Tomorrow on 2019/4/29/029
  */
+@CrossOrigin
 @Controller
 @RequestMapping("/bookInfo")
 public class BookInfoController {
@@ -64,9 +65,9 @@ public class BookInfoController {
     }
 
     @RequestMapping(value="/selectAllBookInfo",method=RequestMethod.POST)
-    public @ResponseBody Map<String,Object> selectAllBookInfo(HttpServletResponse response){
-        response.setHeader("Access-Control-Allow-Origin","*");
-        response.setHeader("Cache-Control","no-cache");
+    public @ResponseBody Map<String,Object> selectAllBookInfo(){
+//        response.setHeader("Access-Control-Allow-Origin","*");
+//        response.setHeader("Cache-Control","no-cache");
         List<BookInfo> bookInfoList=bookInfoService.selectAllBookInfo();
         if(!bookInfoList.isEmpty()){
             return Common.getRes(bookInfoList,1000,"success");
@@ -75,9 +76,9 @@ public class BookInfoController {
         }
     }
     @RequestMapping(value="/selectBookInfo",method = RequestMethod.POST)
-    public @ResponseBody Map<String,Object> selectBookInfo(@RequestBody BookInfo bookInfo,HttpServletResponse response){
-        response.setHeader("Access-Control-Allow-Origin","*");
-        response.setHeader("Cache-Control","no-cache");
+    public @ResponseBody Map<String,Object> selectBookInfo(@RequestBody BookInfo bookInfo){
+//        response.setHeader("Access-Control-Allow-Origin","*");
+//        response.setHeader("Cache-Control","no-cache");
         List<BookInfo> bookInfoList=bookInfoService.selectBookInfo(bookInfo);
         if(!bookInfoList.isEmpty()){
             return Common.getRes(bookInfoList,1000,"success");

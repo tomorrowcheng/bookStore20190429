@@ -12,6 +12,8 @@ function selectAllBookInfo(){
         contentType:"application/json",
         crossDomain:true,
         success:function(data){
+            $("#allBookType").children('div.row').remove();
+            $("#allBookType").append(row);
             for(var i in data.data){
                 var picture=data.data[i].picture;
                 var price=data.data[i].price;
