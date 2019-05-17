@@ -16,6 +16,10 @@
             <result column="picture" property="picture"/>
             <result column="price" property="price"/>
         </association>
+        <association property="user" javaType="com.ncu.bookstore.entity.User">
+            <id column="userID" property="userID"/>
+            <result column="userName" property="userName"/>
+        </association>
         <association property="authors" javaType="com.ncu.bookstore.entity.Authors">
             <id column="authorID" property="authorID"/>
             <result column="authorName" property="authorName"/>
@@ -28,9 +32,15 @@
             <result column="tel" property="tel"/>
         </association>
     </resultMap>
+
+    <select id="selectAllOrderInfo" resultMap="OrderInfo">
+        select * from order_info,book_info,authors,rec_info,users
+        where order_info.bookID=book_info.bookID and book_info.authorID=authors.authorID and order_info.recID=rec_info.recID and order_info.userID=users.userID
+    </select>
+
     <select id="selectOrderInfo" resultMap="OrderInfo">
-        select * from order_info,book_info,authors,rec_info
-        where order_info.bookID=book_info.bookID and book_info.authorID=authors.authorID and order_info.recID=rec_info.recID
+        select * from order_info,book_info,authors,rec_info,users
+        where order_info.bookID=book_info.bookID and book_info.authorID=authors.authorID and order_info.recID=rec_info.recID and order_info.userID=users.userID
         <trim prefix="and" prefixOverrides=",">
             <if test="userID!=null">
                 ,order_info.userID=#{userID,jdbcType=INTEGER}

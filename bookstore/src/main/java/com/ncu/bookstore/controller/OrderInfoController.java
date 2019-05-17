@@ -60,4 +60,14 @@ public class OrderInfoController {
             return Common.getRes(null,1002,"no data");
         }
     }
+
+    @RequestMapping(value="/selectAllOrderInfo",method=RequestMethod.POST)
+    public @ResponseBody Map<String,Object> selectAllOrderInfo(){
+        List<OrderInfo> orderInfoList=orderInfoService.selectAllOrderInfo();
+        if(!orderInfoList.isEmpty()){
+            return Common.getRes(orderInfoList,1000,"success");
+        }else{
+            return Common.getRes(null,1002,"no data");
+        }
+    }
 }

@@ -73,7 +73,7 @@ public class BookTypeController {
         }
         int i=bookTypeService.updateBookType(bookType);
         if(i==1) {
-            return Common.getRes(bookTypeService.selectBookType(bookType),1000,"success");
+            return Common.getRes(bookTypeService.selectAllType(),1000,"success");
         }
         else {
             return Common.getRes(null,1002,"data update failure");

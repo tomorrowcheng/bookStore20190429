@@ -12,4 +12,5 @@ public interface OrderInfoMapper {
     int deleteOrderInfo(OrderInfo orderInfo);
     int updateOrderInfo(OrderInfo orderInfo);
     List<OrderInfo> selectOrderInfo(OrderInfo orderInfo);
+    List<OrderInfo> selectAllOrderInfo();
 }

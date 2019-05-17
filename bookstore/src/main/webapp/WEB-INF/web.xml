@@ -60,6 +60,7 @@
 
   <!-- 设置默认的启动时的初始页面-->
   <welcome-file-list>
+    <!--<welcome-file>/WEB-INF/views/user.jsp</welcome-file>-->
     <welcome-file>/index.jsp</welcome-file>
   </welcome-file-list>
 

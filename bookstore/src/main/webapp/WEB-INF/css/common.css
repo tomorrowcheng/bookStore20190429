@@ -6,6 +6,7 @@
 .type>li>a{
     padding:0;
     margin: 5px;
+    color:#777;
 }
 
 .navbar-default .navbar-nav > .active > a,
@@ -13,4 +14,57 @@
 .navbar-default .navbar-nav > .active > a:focus{
     color:#4DC7EC;
     background-color:#F8D29D;
+}
+
+.type> .active> a,
+.type> .active> a:hover,
+.type> .active> a:focus{
+    color:#4DC7EC;
+    background-color:#F5f5D5;
+}
+
+.title{
+    margin-top:-8px;
+    color:#777;
+    text-align: left;
+    font-size:14px;
+}
+
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle !important;
+}
+
+#tag{
+    background-color:#F5F5D5;
+    height:100%;
+    padding-right:0;
+    padding-left:0;
+}
+.nav-pills > li > a{
+    border-radius:0;
+    padding-left: 30px;
+    font-size:16px;
+    color:#4DC7EC;
+}
+.nav-stacked > li + li{
+    margin-top:0;
+}
+.nav > li > a:hover,
+.nav > li > a:focus {
+    color:#4DC7EC;
+    background-color:#F8D29D;
+    opacity: 0.8;
+}
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus{
+    color:#4DC7EC;
+    background-color:#F8D29D;
+    opacity: 0.8;
+}
+.titleManage{
+    color:#777;
+    text-align: left;
+    font-size:14px;
 }

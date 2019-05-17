@@ -35,4 +35,9 @@ public class OrderInfoServiceImp implements OrderInfoService {
     public List<OrderInfo> selectOrderInfo(OrderInfo orderInfo) {
         return orderInfoMapper.selectOrderInfo(orderInfo);
     }
+
+    @Override
+    public List<OrderInfo> selectAllOrderInfo() {
+        return orderInfoMapper.selectAllOrderInfo();
+    }
 }

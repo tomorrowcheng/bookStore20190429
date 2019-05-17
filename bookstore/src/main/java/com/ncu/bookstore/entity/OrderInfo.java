@@ -14,6 +14,7 @@ public class OrderInfo {
     private BookInfo bookInfo;
     private RecInfo recInfo;
     private Authors authors;
+    private User user;
 
     public OrderInfo() {
     }
@@ -96,5 +97,13 @@ public class OrderInfo {
 
     public void setAuthors(Authors authors) {
         this.authors = authors;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
