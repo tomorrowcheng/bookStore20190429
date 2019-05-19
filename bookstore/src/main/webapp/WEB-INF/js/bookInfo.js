@@ -3,7 +3,7 @@ var divsm2='<div class="col-sm-2">'+'<div class="thumbnail">';
 var divsm3='<div class="col-sm-3">'+'<div class="thumbnail">';
 var divend='</div>'+'</div>';
 var row='<div class="row">'+'</div>';
-var shopCart='<a style="float:right" href="#">'+'<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>'+"&nbsp;&nbsp;购物车"+'</a>';
+var shopCart='<a style="float:right" href="#" onclick="log()">'+'<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>'+"&nbsp;&nbsp;购物车"+'</a>';
 function selectAllBookInfo(){
     $("#selectBookName").show();
     $.ajax({
@@ -72,7 +72,7 @@ function selectNewBookInfo(){
                 var price = data.data[i].price;
                 var bookName = data.data[i].bookName;
                 var authorName=data.data[i].authors.authorName;
-                var img='<img src="'+picture+'" alt="'+bookName+'" style="width:195px;height:205px">';
+                var img='<img src="'+picture+'" alt="'+bookName+'" style="width:180px;height:195px">';
                 var title='<h4 style="margin-top:5px;margin-bottom:5px;font-weight:bold">'+bookName+'</h4>';
                 var author='<p style="margin:0">'+'<span>'+"作者:"+'</span>'+authorName+'</p>';
                 var priceSpan='<p style="margin:0;color:#b22222">'+'<span>'+"价格："+'</span>'+price+"￥"+shopCart+'</p>';
@@ -107,4 +107,46 @@ function selectBookByName(){
             }
         }
     })
+}
+function adminLoginFun(){
+    var adminNameCheck=$("#adminName").val();
+    var adminPasswordCheck=$("#adminPassword").val();
+    if(adminNameCheck===""){
+        alert("请输入管理员账号");
+        return false;
+    }else if(adminPasswordCheck===""){
+        alert("请输入管理员密码");
+        return false;
+    }
+    var myData=JSON.stringify({"adminName":adminNameCheck});
+    $.ajax({
+        type:"POST",
+        url:"http://localhost:8080/admin/selectAdmin",
+        contentType:"application/json",
+        data:myData,
+        crossDomain:true,
+        success:function(data){
+            var code=data.code;
+            if(code===1002){
+                alert("管理员账号不存在");
+            }else if(code===1000){
+                var adminPassword=data.data[0].adminPassword;
+                var rank=data.data[0].rank;
+                if(adminPassword===adminPasswordCheck){
+                    if(rank===1){
+                        var href=$("#PageContext").val()+"/views/admin.html?admin=1";
+                        window.top.location.href=href;
+                    }else{
+                        var href2=$("#PageContext").val()+"/views/admin.html?admin=2";
+                        window.top.location.href=href2;
+                    }
+                } else{
+                    alert("用户名或密码不正确")
+                }
+            }
+        }
+    })
+}
+function log(){
+    alert("请先登录系统！")
 }

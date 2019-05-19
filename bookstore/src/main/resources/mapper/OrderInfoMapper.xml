@@ -48,6 +48,9 @@
             <if test="orderID!=null">
                 ,orderID=#{orderID,jdbcType=INTEGER}
             </if>
+            <if test="status!=null">
+                ,status=#{status,jdbcType=INTEGER}
+            </if>
         </trim>
     </select>
 

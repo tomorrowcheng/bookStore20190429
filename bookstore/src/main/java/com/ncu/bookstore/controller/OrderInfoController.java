@@ -35,7 +35,7 @@ public class OrderInfoController {
     public @ResponseBody Map<String,Object> deleteOrderInfo(@RequestBody OrderInfo orderInfo){
         int i=orderInfoService.deleteOrderInfo(orderInfo);
         if(i==1){
-            return Common.getRes(orderInfoService.selectOrderInfo(orderInfo),1000,"success");
+            return Common.getRes(orderInfoService.selectAllOrderInfo(),1000,"success");
         }else{
             return Common.getRes(null,1002,"data deletion failure");
         }
@@ -45,7 +45,7 @@ public class OrderInfoController {
     public @ResponseBody Map<String,Object> updateOrderInfo(@RequestBody OrderInfo orderInfo){
         int i=orderInfoService.updateOrderInfo(orderInfo);
         if(i==1){
-            return Common.getRes(orderInfoService.selectOrderInfo(orderInfo),1000,"success");
+            return Common.getRes(orderInfoService.selectAllOrderInfo(),1000,"success");
         }else{
             return Common.getRes(null,1002,"data update failure");
         }

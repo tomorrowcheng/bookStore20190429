@@ -13,12 +13,7 @@
     </select>
 
     <select id="selectAdmin" resultMap="Admin" parameterType="com.ncu.bookstore.entity.Admin">
-        select * from admin
-        <trim prefix="where" prefixOverrides="and">
-            <if test="adminName!=null">
-                and BINARY adminName like  "%"#{adminName, jdbcType = VARCHAR}"%"
-            </if>
-        </trim>
+        select * from admin where adminName=#{adminName, jdbcType = VARCHAR}
     </select>
 
     <insert id="insertAdmin" parameterType="com.ncu.bookstore.entity.Admin">

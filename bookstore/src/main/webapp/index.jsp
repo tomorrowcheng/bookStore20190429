@@ -38,6 +38,7 @@
 <div class="container">
     <div class="row">
         <div class="tab-content">
+            <input id="PageContext" type="hidden" value="${pageContext.request.contextPath}" />
             <%--新书速递--%>
             <div id="newBook" class="tab-pane container">
                 <div class="row"></div>
@@ -96,7 +97,7 @@
                         <button type="button" class="btn btn-default"
                                 data-dismiss="modal">返回
                         </button>
-                        <button type="button" class="btn btn-primary" onclick="log()">
+                        <button type="button" class="btn btn-primary" onclick="">
                             登录
                         </button>
                     </div>
@@ -171,8 +172,46 @@
                         <button type="button" class="btn btn-default"
                                 data-dismiss="modal">返回
                         </button>
-                        <button type="button" class="btn btn-primary" onclick="log()">
+                        <button type="button" class="btn btn-primary" onclick="">
                             注册
+                        </button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <div class="modal fade" id="adminLogin" tabindex="-1" role="dialog" aria-labelledby="adminLoginLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">×
+                    </button>
+                    <h4 class="modal-title" id="adminLoginLabel">
+                        管理员登录
+                    </h4>
+                </div>
+                <form class="form-horizontal" role="form">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="adminName" class="col-xs-3 control-label">管理员账号：</label>
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control" id="adminName" placeholder="管理员账号">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminPassword" class="col-xs-3 control-label">管理员密码：</label>
+                            <div class="col-xs-9">
+                                <input type="password" class="form-control" id="adminPassword" placeholder="管理员密码">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default"
+                                data-dismiss="modal">返回
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="adminLoginFun()">
+                            登录
                         </button>
                     </div>
                 </form>
@@ -181,9 +220,6 @@
     </div><!-- /.modal -->
 </div>
 <script>
-    function log(){
-        alert("登录成功")
-    }
     function showPreview(source) {
         var file = source.files[0];
         if(window.FileReader) {

@@ -12,6 +12,12 @@
     <script type="text/javascript" src="../js/adminManage.js"></script>
     <script type="text/javascript" src="../js/bookTypeManage.js"></script>
     <script type="text/javascript" src="../js/userInfoManage.js"></script>
+    <script type="text/javascript" src="../js/orderInfoManage.js"></script>
+    <script type="text/javascript" src="../js/authorsManage.js"></script>
+    <script type="text/javascript" src="../js/bookInfoManage.js"></script>
+    <script>
+        selectAllBookInfoManage();
+    </script>
 </head>
 <body>
 <div class="navbar navbar-default" style="text-align: center;background-color: #F8D29D;border-bottom-color: #777777">
@@ -21,55 +27,261 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="#out" data-toggle="tab">后台管理系统&nbsp;&nbsp;<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;退出</a>
+                <a href="#" data-toggle="tab" onclick="adminLogout()">后台管理系统&nbsp;&nbsp;<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;退出</a>
             </li>
         </ul>
     </div>
 </div>
 <div class="container-fluid">
-    <div class="row" style="margin-top:-21px;height:540px;">
+    <div class="row" style="margin-top:-21px;height:100vh">
         <div class="col-sm-2" id="tag">
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="#bookInfoManage" data-toggle="pill">&nbsp;&nbsp;图书信息</a></li>
-                <li><a href="#orderInfoManage" data-toggle="pill">&nbsp;&nbsp;订单信息</a></li>
-                <li><a href="#userInfoManage" data-toggle="pill" onclick="selectAllUser()">&nbsp;&nbsp;会员信息</a></li>
-                <li><a href="#adminInfoManage" data-toggle="pill" onclick="selectAllAdmin()">&nbsp;&nbsp;管理员信息</a></li>
+                <li class="active"><a href="#bookInfoManage" data-toggle="pill" onclick="selectAllBookInfoManage()">&nbsp;&nbsp;图书信息</a></li>
+                <li><a href="#orderInfoManage" data-toggle="pill" onclick="selectAllOrderInfo()">&nbsp;&nbsp;订单信息</a></li>
+                <li id="user"><a href="#userInfoManage" data-toggle="pill" onclick="selectAllUser()">&nbsp;&nbsp;会员信息</a></li>
+                <li id="admin"><a href="#adminInfoManage" data-toggle="pill" onclick="selectAllAdmin()">&nbsp;&nbsp;管理员信息</a></li>
                 <li><a href="#bookTypeManage" data-toggle="pill" onclick="selectBookTypeAll()">&nbsp;&nbsp;图书类别信息</a></li>
-                <li><a href="#authorsManage" data-toggle="pill">&nbsp;&nbsp;作者信息</a></li>
+                <li><a href="#authorsManage" data-toggle="pill" onclick="selectAllAuthors()">&nbsp;&nbsp;作者信息</a></li>
             </ul>
         </div>
         <div class="col-sm-10">
             <div class="tab-content">
                 <div id="bookInfoManage" class="tab-pane fade in active">
                     <p class="titleManage">图书信息管理</p>
+                    <form class="form-inline" role="form">
+                        <div class="form-group" style="margin-bottom: 5px">
+                            <label for="selectType" class="control-label">图书类别：</label>
+                            <select class="form-control" id="selectType">
+                                <option value="">全部种类</option>
+                            </select>
+                            <button type="button" class="btn btn-info" onclick="selectBookTypeManage()">
+                                <span class="glyphicon glyphicon-search"></span>查询
+                            </button>
+                            <label for="selectBookName" class="control-label">图书名称：</label>
+                            <input type="text" class="form-control" id="selectBookName" placeholder="图书名称">
+                            <button type="button" class="btn btn-info" onclick="selectBookNameManage()">
+                                <span class="glyphicon glyphicon-search"></span>查询
+                            </button>
+                            <button type="reset" class="btn btn-warning" onclick="selectAllBookInfoManage()">
+                                <span class="glyphicon glyphicon-refresh"></span>刷新
+                            </button>
+                        </div>
+                        <a href="#"  data-toggle="modal" data-target="#insertBookInfoManage" style="float:right;margin-top: 10px;">添加图书信息?</a>
+                    </form>
                     <table id="bookInfoTable" class="table table-bordered table-hover" style="table-layout:fixed">
                         <thead>
                         <tr class="info">
                             <th>序号</th>
-                            <th>图书名称</th>
-                            <th>作者</th>
-                            <th>类别</th>
                             <th>图片</th>
+                            <th>图书名称</th>
                             <th>价格</th>
-                            <th>isbn</th>
-                            <th>尺寸</th>
-                            <th>出版社</th>
-                            <th>出版时间</th>
-                            <th>页数</th>
-                            <th>图书详情</th>
-                            <th>库存数量</th>
                             <th>操作</th>
                         </tr>
                         </thead>
                     </table>
+                    <div id="updateBookInfoManage" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="#updateBookInfoManageLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-hidden="true">×
+                                    </button>
+                                    <h4 class="modal-title" id="updateBookInfoManageLabel">
+                                        图书详情
+                                    </h4>
+                                </div>
+                                <form class="form-horizontal" role="form">
+                                    <div class="modal-body">
+                                        <div class="form-group hide">
+                                            <input type="number" class="form-control" id="bookIDUpdate">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="bookImgUpdate" class="col-xs-3 control-label">图书图片：</label>
+                                            <div class="col-xs-9" id="bookImgUpdate"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="bookNameUpdate" class="col-xs-3 control-label">图书名称：</label>
+                                            <div class="col-xs-5">
+                                                <input type="text" class="form-control" id="bookNameUpdate" placeholder="图书名称">
+                                            </div>
+                                            <label for="stockQtyUpdate" class="col-xs-2 control-label">库存：</label>
+                                            <div class="col-xs-2">
+                                                <input type="number" class="form-control" id="stockQtyUpdate" placeholder="库存">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="authorUpdate" class="col-xs-3 control-label">作者：</label>
+                                            <div class="col-xs-3">
+                                                <select class="form-control" id="authorUpdate"></select>
+                                            </div>
+                                            <label for="bookTypeUpdate" class="col-xs-3 control-label">类别：</label>
+                                            <div class="col-xs-3">
+                                                <select class="form-control" id="bookTypeUpdate"></select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="priceUpdate" class="col-xs-3 control-label">价格：</label>
+                                            <div class="col-xs-3">
+                                                <input type="text" class="form-control" id="priceUpdate" placeholder="价格">
+                                            </div>
+                                            <label for="isbnUpdate" class="col-xs-3 control-label">ISBN：</label>
+                                            <div class="col-xs-3">
+                                                <input type="text" class="form-control" id="isbnUpdate" placeholder="ISBN">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="publishingUpdate" class="col-xs-3 control-label">出版社：</label>
+                                            <div class="col-xs-9">
+                                                <input type="text" class="form-control" id="publishingUpdate" placeholder="出版社">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="bookSizeUpdate" class="col-xs-3 control-label">开本：</label>
+                                            <div class="col-xs-3">
+                                                <select class="form-control" id="bookSizeUpdate">
+                                                    <option value="16">16</option>
+                                                    <option value="32">32</option>
+                                                    <option value="64">64</option>
+                                                </select>
+                                            </div>
+                                            <label for="bookPageUpdate" class="col-xs-3 control-label">总页数：</label>
+                                            <div class="col-xs-3">
+                                                <input type="text" class="form-control" id="bookPageUpdate" placeholder="总页数">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contentIntroUpdate" class="col-xs-3 control-label">简介：</label>
+                                            <div class="col-xs-9">
+                                                <input type="text" class="form-control" id="contentIntroUpdate" placeholder="简介">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default"
+                                                data-dismiss="modal">取消
+                                        </button>
+                                        <button type="button" class="btn btn-primary" onclick="updateBookInfoManageReal()">
+                                            修改
+                                        </button>
+                                    </div>
+                                </form>
+                            </div><!-- /.modal-content -->
+                        </div>
+                    </div>
+                    <div id="insertBookInfoManage" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="#insertBookInfoManageLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-hidden="true">×
+                                    </button>
+                                    <h4 class="modal-title" id="insertBookInfoManageLabel">
+                                       增加图书
+                                    </h4>
+                                </div>
+                                <form class="form-horizontal" role="form">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="bookImgInsert" class="col-xs-3 control-label">图书图片：</label>
+                                            <div class="col-xs-5">
+                                                <input id="bookImgInsert" type="file" onchange="showPreview(this)">
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <img id="portrait" src="" style="display:none;width: 100px;height:100px;" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="bookNameInsert" class="col-xs-3 control-label">图书名称：</label>
+                                            <div class="col-xs-5">
+                                                <input type="text" class="form-control" id="bookNameInsert" placeholder="图书名称">
+                                            </div>
+                                            <label for="stockQtyInsert" class="col-xs-2 control-label">库存：</label>
+                                            <div class="col-xs-2">
+                                                <input type="number" class="form-control" id="stockQtyInsert" placeholder="库存">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="authorInsert" class="col-xs-3 control-label">作者：</label>
+                                            <div class="col-xs-3">
+                                                <select class="form-control" id="authorInsert"></select>
+                                            </div>
+                                            <label for="bookTypeInsert" class="col-xs-3 control-label">类别：</label>
+                                            <div class="col-xs-3">
+                                                <select class="form-control" id="bookTypeInsert"></select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="priceInsert" class="col-xs-3 control-label">价格：</label>
+                                            <div class="col-xs-3">
+                                                <input type="text" class="form-control" id="priceInsert" placeholder="价格">
+                                            </div>
+                                            <label for="isbnInsert" class="col-xs-3 control-label">ISBN：</label>
+                                            <div class="col-xs-3">
+                                                <input type="text" class="form-control" id="isbnInsert" placeholder="ISBN">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="publishingInsert" class="col-xs-3 control-label">出版社：</label>
+                                            <div class="col-xs-9">
+                                                <input type="text" class="form-control" id="publishingInsert" placeholder="出版社">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="bookSizeInsert" class="col-xs-3 control-label">开本：</label>
+                                            <div class="col-xs-3">
+                                                <select class="form-control" id="bookSizeInsert">
+                                                    <option value="16">16</option>
+                                                    <option value="32">32</option>
+                                                    <option value="64">64</option>
+                                                </select>
+                                            </div>
+                                            <label for="bookPageInsert" class="col-xs-3 control-label">总页数：</label>
+                                            <div class="col-xs-3">
+                                                <input type="text" class="form-control" id="bookPageInsert" placeholder="总页数">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contentIntroInsert" class="col-xs-3 control-label">简介：</label>
+                                            <div class="col-xs-9">
+                                                <input type="text" class="form-control" id="contentIntroInsert" placeholder="简介">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default"
+                                                data-dismiss="modal">取消
+                                        </button>
+                                        <button type="button" class="btn btn-primary" onclick="insertBookInfo()">
+                                            添加
+                                        </button>
+                                    </div>
+                                </form>
+                            </div><!-- /.modal-content -->
+                        </div>
+                    </div>
                 </div>
                 <div id="orderInfoManage" class="tab-pane fade">
                     <p class="titleManage">订单信息管理</p>
+                    <form class="form-inline" role="form">
+                        <div class="form-group" style="margin-bottom: 5px">
+                            <label for="selectStatus" class="control-label">订单状态</label>
+                            <select class="form-control" id="selectStatus">
+                                <option value="">全部</option>
+                                <option value="0">未发货</option>
+                                <option value="1">已发货</option>
+                                <option value="2">已签收</option>
+                                <option value="3">已取消</option>
+                            </select>
+                            <button type="button" class="btn btn-info" onclick="selectOrderInfo()">
+                                <span class="glyphicon glyphicon-search"></span>查询
+                            </button>
+                        </div>
+                    </form>
                     <table id="orderInfoManageTable" class="table table-bordered table-hover">
                         <thead>
                         <tr class="info">
                             <td>订单号</td>
-                            <td>用户名称</td>
+                            <td>会员名称</td>
                             <td>图书名称</td>
                             <td>订单状态</td>
                             <td>操作</td>
@@ -77,6 +289,82 @@
                         </thead>
                         <tbody></tbody>
                     </table>
+                    <div id="updateOrderInfo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="#updateOrderInfoLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-hidden="true">×
+                                    </button>
+                                    <h4 class="modal-title" id="updateOrderInfoLabel">
+                                       订单详情
+                                    </h4>
+                                </div>
+                                <form class="form-horizontal" role="form">
+                                    <div class="modal-body">
+                                        <div class="form-group hide">
+                                            <input type="number" class="form-control" id="updateOrderInfoID" placeholder="updateAdminID">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="userName_order" class="col-xs-3 control-label">会员名称：</label>
+                                            <div class="col-xs-9">
+                                                <input type="text" class="form-control" id="userName_order" placeholder="会员名称" readonly="readonly">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="bookName_order" class="col-xs-3 control-label">图书名称：</label>
+                                            <div class="col-xs-5">
+                                                <input type="text" class="form-control" id="bookName_order" placeholder="图书名称" readonly="readonly">
+                                            </div>
+                                            <label for="number_order" class="col-xs-2 control-label">数量：</label>
+                                            <div class="col-xs-2">
+                                                <input type="number" class="form-control" id="number_order" placeholder="数量">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="linkman_order" class="col-xs-3 control-label">联系人：</label>
+                                            <div class="col-xs-3">
+                                                <input type="text" class="form-control" id="linkman_order" placeholder="联系人" readonly="readonly">
+                                            </div>
+                                            <label for="tel_order" class="col-xs-3 control-label">联系电话：</label>
+                                            <div class="col-xs-3">
+                                                <input type="text" class="form-control" id="tel_order" placeholder="联系电话" readonly="readonly">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="address_order" class="col-xs-3 control-label">收货地址：</label>
+                                            <div class="col-xs-9">
+                                                <input type="text" class="form-control" id="address_order" placeholder="收货地址" readonly="readonly">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="expNum_order" class="col-xs-3 control-label">快递编号：</label>
+                                            <div class="col-xs-3">
+                                                <input type="text" class="form-control" id="expNum_order" placeholder="快递编号">
+                                            </div>
+                                            <label for="status_order" class="col-xs-3 control-label">发货状态：</label>
+                                            <div class="col-xs-3">
+                                                <select class="form-control" id="status_order">
+                                                    <option value="0">未发货</option>
+                                                    <option value="1">已发货</option>
+                                                    <option value="2">已签收</option>
+                                                    <option value="3">已取消</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default"
+                                                data-dismiss="modal">取消
+                                        </button>
+                                        <button type="button" class="btn btn-primary" onclick="updateOrderInfoReal()">
+                                            修改
+                                        </button>
+                                    </div>
+                                </form>
+                            </div><!-- /.modal-content -->
+                        </div>
+                    </div>
                 </div>
                 <div id="userInfoManage" class="tab-pane fade">
                     <p class="titleManage">会员信息管理</p>
@@ -311,11 +599,116 @@
                 </div>
                 <div id="authorsManage" class="tab-pane fade">
                     <p class="titleManage">作者信息管理</p>
-                    <table></table>
+                    <form class="form-inline" role="form">
+                        <div class="form-group" style="margin-bottom: 5px">
+                            <label for="selectAuthor" class="control-label">作者姓名</label>
+                            <input type="text" class="form-control" id="selectAuthor" placeholder="作者姓名">
+                            <button type="button" class="btn btn-info" onclick="selectAuthors()">
+                                <span class="glyphicon glyphicon-search"></span>查询
+                            </button>
+                            <button type="reset" class="btn btn-warning" onclick="selectAllAuthors()">
+                                <span class="glyphicon glyphicon-refresh"></span>刷新
+                            </button>
+                        </div>
+                        <a href="#"  data-toggle="modal" data-target="#insertAuthors" style="float:right;margin-top: 10px;">添加作者信息?</a>
+                    </form>
+                    <table id="authorsManageTable" class="table table-bordered table-hover">
+                        <thead>
+                        <tr class="info">
+                            <td>序号</td>
+                            <td>作者姓名</td>
+                            <td>简介</td>
+                            <td>操作</td>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <div id="insertAuthors" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="insertAuthorsLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-hidden="true">×
+                                    </button>
+                                    <h4 class="modal-title" id="insertAuthorsLabel">
+                                        添加作者信息
+                                    </h4>
+                                </div>
+                                <form class="form-horizontal" role="form">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="insertAuthorName" class="col-xs-3 control-label">作者姓名：</label>
+                                            <div class="col-xs-9">
+                                                <input type="text" class="form-control" id="insertAuthorName" placeholder="作者姓名">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="insertDescription" class="col-xs-3 control-label">作者简介：</label>
+                                            <div class="col-xs-9">
+                                                <input type="text" class="form-control" id="insertDescription" placeholder="作者简介">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default"
+                                                data-dismiss="modal">取消
+                                        </button>
+                                        <button type="button" class="btn btn-primary" onclick="insertAuthors()">
+                                            添加
+                                        </button>
+                                    </div>
+                                </form>
+                            </div><!-- /.modal-content -->
+                        </div>
+                    </div>
+                    <div id="updateAuthors" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="updateAuthorsLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-hidden="true">×
+                                    </button>
+                                    <h4 class="modal-title" id="updateAuthorsLabel">
+                                        修改作者信息
+                                    </h4>
+                                </div>
+                                <form class="form-horizontal" role="form">
+                                    <div class="modal-body">
+                                        <div class="form-group hide">
+                                            <input type="number" class="form-control" id="updateAuthorID" placeholder="updateAuthorID">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="updateAuthorName" class="col-xs-3 control-label">作者姓名：</label>
+                                            <div class="col-xs-9">
+                                                <input type="text" class="form-control" id="updateAuthorName" placeholder="作者姓名">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="updateDescription" class="col-xs-3 control-label">作者简介：</label>
+                                            <div class="col-xs-9">
+                                                <input type="text" class="form-control" id="updateDescription" placeholder="作者简介">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default"
+                                                data-dismiss="modal">取消
+                                        </button>
+                                        <button type="button" class="btn btn-primary" onclick="updateAuthorsReal()">
+                                            修改
+                                        </button>
+                                    </div>
+                                </form>
+                            </div><!-- /.modal-content -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    adminHide();
+</script>
 </body>
 </html>

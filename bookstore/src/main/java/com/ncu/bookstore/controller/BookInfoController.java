@@ -35,7 +35,7 @@ public class BookInfoController {
         bookInfo.setPicture(imgPath);
         int i=bookInfoService.insertBookInfo(bookInfo);
         if(i==1) {
-            return Common.getRes(null,1000,"success");
+            return Common.getRes(bookInfoService.selectAllBookInfo(),1000,"success");
         }
         else {
             return Common.getRes(null,1002,"data insertion failure");
@@ -46,7 +46,7 @@ public class BookInfoController {
     public @ResponseBody Map<String,Object> deleteBookInfo(@RequestBody BookInfo bookInfo){
         int i=bookInfoService.deleteBookInfo(bookInfo);
         if(i==1) {
-            return Common.getRes(null,1000,"success");
+            return Common.getRes(bookInfoService.selectAllBookInfo(),1000,"success");
         }
         else {
             return Common.getRes(null,1002,"data deletion failure");
@@ -57,7 +57,7 @@ public class BookInfoController {
     public @ResponseBody Map<String,Object> updateBookInfo(@RequestBody BookInfo bookInfo){
         int i=bookInfoService.updateBookInfo(bookInfo);
         if(i==1) {
-            return Common.getRes(null,1000,"success");
+            return Common.getRes(bookInfoService.selectAllBookInfo(),1000,"success");
         }
         else {
             return Common.getRes(null,1002,"data update failure");
