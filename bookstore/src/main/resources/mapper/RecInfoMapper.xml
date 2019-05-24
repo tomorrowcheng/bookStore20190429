@@ -16,6 +16,9 @@
             <if test="recID!=null">
                 and recID=#{recID,jdbcType=INTEGER}
             </if>
+            <if test="userID!=null">
+                and userID=#{userID,jdbcType=INTEGER}
+            </if>
         </trim>
     </select>
 

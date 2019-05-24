@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>bookstore</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/bookType.js"></script>
+    <script type="text/javascript" src="../js/shoppingCart.js"></script>
+    <script type="text/javascript" src="../js/bookInfoUser.js"></script>
+    <script type="text/javascript" src="../js/initTableCheckbox.js"></script>
+    <script type="text/javascript" src="../js/userInfo.js"></script>
+    <script type="text/javascript" src="../js/bookDetail.js"></script>
+    <script type="text/javascript" src="../js/orderInfo.js"></script>
+    <script>
+        selectAllBookType();
+        selectAllBookInfo();
+        selectNewBookInfo();
+        selectShopping();
+        userSelectFun();
+        recInfoSelectFun();
+    </script>
+</head>
+<body style="background-color: #F5F5D5">
+<div class="navbar navbar-default" style="text-align: center;background-color: #F8D29D">
+    <div class="container" id="navTop">
+        <div class="navbar-header">
+            <div class="navbar-brand">明天小书屋</div>
+        </div>
+        <ul class="nav navbar-nav" style="display:inline-block;float:none;font-size:16px">
+            <li id="allBookLi" class="active"><a href="#allBook" data-toggle="tab">所有图书</a></li>
+            <li><a href="#newBook" data-toggle="tab">新书速递</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#cart" data-toggle="tab"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp;&nbsp;购物车</a></li>
+            <li><a href="#order" data-toggle="tab" onclick="selectOrderInfo()"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;&nbsp;我的订单</a></li>
+            <li><a href="#userInfo" data-toggle="tab" onclick="recInfoSelectFun()"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;个人信息</a></li>
+            <li><a href="#" data-toggle="tab" onclick="userLogout()"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;退出</a></li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="tab-content">
+            <!--新书速递-->
+            <div id="newBook" class="tab-pane container">
+                <div class="row"></div>
+            </div>
+            <!--所有图书-->
+            <div id="allBook" class="tab-pane active">
+                <ul class="nav navbar-nav type">
+                    <li class="active"><a href="#allBookType" data-toggle="tab" onclick="">全部种类</a></li>
+                    <li id="selectBookName" style="float:right;margin-top:2px">
+                        <form style="display:inline;">
+                            <input id="bookName" type="text" placeholder="书名">
+                            <button type="button" class="btn-small btn-info" onclick="selectBookByName()">
+                                <span class="glyphicon glyphicon-search"></span>查询
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+                <div id="allBookContent" class="tab-content">
+                    <div id="allBookType" class="tab-pane active container">
+                        <div class="row"></div>
+                    </div>
+                </div>
+            </div>
+            <!--销售排行榜-->
+            <!--<div id="sellRank" class="tab-pane">销售排行榜</div>-->
+            <div id="cart" class="tab-pane container">
+                <p class="title">我的购物车</p>
+                <a href="#" onclick="selectShopping()" style="float:right"><span class="glyphicon glyphicon-refresh"></span>刷新</a>
+                <table id="cartInfo" class="table table-bordered table-hover" style="table-layout: fixed">
+                    <thead>
+                        <tr class="success">
+                            <th style="width: 270px">商品信息</th>
+                            <th>单价</th>
+                            <th>数量</th>
+                            <th>金额</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--<tr>-->
+                            <!--<td>-->
+                                <!--<img src="/upload/b45d192e-000a-4bcd-9270-8eaf0c82c18atimg.jpg" alt="天才在左，疯子在右" style="width:100px;height:105px">-->
+                                <!--<div style="display:inline;float:right;margin-top:50px"><h5 style="margin-top:5px;margin-bottom:5px;font-weight:bold">天才在左，疯子在右</h5><p style="margin:0"><span>作者:</span>程程</p></div>-->
+                            <!--</td>-->
+                            <!--<td style="color:#b22222;">23.2￥</td>-->
+                            <!--<td>2</td>-->
+                            <!--<td style="color:#b22222;font-size: 16px">46.4￥</td>-->
+                            <!--<td><a href="#">删除</a></td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td>-->
+                                <!--<img src="/upload/f4743ad8-07d7-4c51-8ee6-05a0352b0611panda.jpg" alt="熊猫" style="width:100px;height:105px">-->
+                                <!--<div style="display:inline;float:right;margin-top:50px"><h5 style="margin-top:5px;margin-bottom:5px;font-weight:bold">小熊猫</h5><p style="margin:0"><span>作者:</span>明天</p></div>-->
+                            <!--</td>-->
+                            <!--<td style="color:#b22222;">30.0￥</td>-->
+                            <!--<td>2</td>-->
+                            <!--<td style="color:#b22222;font-size: 16px">60.0￥</td>-->
+                            <!--<td><a href="#">删除</a></td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td>-->
+                                <!--<img src="/upload/b45d192e-000a-4bcd-9270-8eaf0c82c18atimg.jpg" alt="天才在左" style="width:100px;height:120px">-->
+                                <!--<div style="display:inline;float:right;margin-top:50px"><h5 style="margin-top:5px;margin-bottom:5px;font-weight:bold">天才在左</h5><p style="margin:0"><span>作者:</span>程程</p></div>-->
+                            <!--</td>-->
+                            <!--<td style="color:#b22222;">23.2￥</td>-->
+                            <!--<td>1</td>-->
+                            <!--<td style="color:#b22222;font-size: 16px">23.2￥</td>-->
+                            <!--<td><a href="#">删除</a></td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td colspan="5">-->
+                                <!--<span>已选中&nbsp;&nbsp;<span style="color:#4DC7EC">2</span>&nbsp;&nbsp;件商品</span>-->
+                                <!--<a href="#" style="padding-left:20px">删除选中商品</a>-->
+                                <!--<div style="display: inline;float:right">-->
+                                    <!--<span style="color:#777;font-size: 18px;margin-right:8px">应付金额:</span>-->
+                                    <!--<span style="color:#b22222;font-size: 22px;margin-right:10px">83.2￥</span>-->
+                                    <!--<button class="btn-danger btn-lg">结算</button>-->
+                                <!--</div>-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                    </tbody>
+                </table>
+                <div id="insertOrder" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="insertOrderLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">×
+                                </button>
+                                <h4 class="modal-title" id="insertOrderLabel">
+                                    订单结算
+                                </h4>
+                            </div>
+                            <form class="form-horizontal" role="form">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <input type="hidden" class="form-control" id="insertBookIDCart">
+                                        <input type="hidden" class="form-control" id="insertBookNumberCart">
+                                        <label for="insertBookNameCart" class="col-xs-3 control-label">图书名称：</label>
+                                        <div class="col-xs-9">
+                                            <input type="text" class="form-control" id="insertBookNameCart" placeholder="图书名称" readonly="readonly">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="insertRecInfoCart" class="col-xs-3 control-label">收货信息：</label>
+                                        <select id="insertRecInfoCart"></select>
+                                        <!--<div class="col-xs-9">-->
+                                            <!--<input type="text" class="form-control" id="insertAdminPassword" placeholder="管理员密码">-->
+                                        <!--</div>-->
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default"
+                                            data-dismiss="modal">取消
+                                    </button>
+                                    <button type="button" class="btn btn-primary" onclick="insertOrderReal()">
+                                        结算
+                                    </button>
+                                </div>
+                            </form>
+                        </div><!-- /.modal-content -->
+                    </div>
+                </div>
+            </div>
+            <div id="order" class="tab-pane container">
+                <p class="title">我的订单</p>
+                <table id="orderInfo" class="table table-bordered table-hover" style="table-layout: fixed">
+                    <thead>
+                    <tr class="success">
+                        <th style="width: 270px">商品信息</th>
+                        <th>数量</th>
+                        <th>金额</th>
+                        <th>收货信息</th>
+                        <th>快递编号</th>
+                        <th>订单状态</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div id="userInfo" class="tab-pane container">
+                <div style="display:inline-block;float:left">
+                    <img id="userPhotoSelect" style="display:block;width:200px;height:250px;margin: 0 0 20px 20px;">
+                    <div>
+                        <p>
+                            <span style="font-size: 16px;margin-right:5px">Shopping号:</span>
+                            <span id="userNameSelect"></span>
+                        </p>
+                        <!--<p>-->
+                            <!--<span style="font-size: 16px;margin-right:5px">出生日期：</span>-->
+                            <!--<span>2001-01-01</span>-->
+                        <!--</p>-->
+                        <p>
+                            <span style="font-size: 16px;margin-right:5px">联系方式:</span>
+                            <span id="phoneNumberSelect"></span>
+                        </p>
+                    </div>
+                </div>
+                <div style="display:inline-block;float:right">
+                    <p style="font-size: 16px;font-weight: bold;color:#777">我的收货信息</p>
+                    <a href="#" style="float:right" onclick="recInfoSelectFun()">刷新？</a>
+                    <table id="recInfoTable" class="table table-bordered table-hover">
+                        <thead>
+                        <tr class="success">
+                            <th style="width:250px">收货地址</th>
+                            <th style="width:150px">邮编</th>
+                            <th style="width:150px">联系人</th>
+                            <th style="width:150px">联系方式</th>
+                            <th style="width:150px">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div id="insertRecInfo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="insertRecInfoLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">×
+                                </button>
+                                <h4 class="modal-title" id="insertRecInfoLabel">
+                                    添加收货信息
+                                </h4>
+                            </div>
+                            <form class="form-horizontal" role="form">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="insertAddress" class="col-xs-3 control-label">收货地址：</label>
+                                        <div class="col-xs-9">
+                                            <input type="text" class="form-control" id="insertAddress" placeholder="收货地址">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="insertPostcode" class="col-xs-3 control-label">邮编：</label>
+                                        <div class="col-xs-9">
+                                            <input type="text" class="form-control" id="insertPostcode" placeholder="邮编">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="insertLinkman" class="col-xs-3 control-label">联系人：</label>
+                                        <div class="col-xs-9">
+                                            <input type="text" class="form-control" id="insertLinkman" placeholder="联系人">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="insertTel" class="col-xs-3 control-label">联系方式：</label>
+                                        <div class="col-xs-9">
+                                            <input type="text" class="form-control" id="insertTel" placeholder="联系方式">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default"
+                                            data-dismiss="modal">取消
+                                    </button>
+                                    <button type="button" class="btn btn-primary" onclick="insertRecInfoFun()">
+                                        添加
+                                    </button>
+                                </div>
+                            </form>
+                        </div><!-- /.modal-content -->
+                    </div>
+                </div>
+                <div id="updateRecInfo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="updateRecInfoLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">×
+                                </button>
+                                <h4 class="modal-title" id="updateRecInfoLabel">
+                                    修改收货信息
+                                </h4>
+                            </div>
+                            <form class="form-horizontal" role="form">
+                                <div class="modal-body">
+                                    <input type="hidden" class="form-control" id="updateRecID">
+                                    <div class="form-group">
+                                        <label for="updateAddress" class="col-xs-3 control-label">收货地址：</label>
+                                        <div class="col-xs-9">
+                                            <input type="text" class="form-control" id="updateAddress" placeholder="收货地址">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="updatePostcode" class="col-xs-3 control-label">邮编：</label>
+                                        <div class="col-xs-9">
+                                            <input type="text" class="form-control" id="updatePostcode" placeholder="邮编">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="updateLinkman" class="col-xs-3 control-label">联系人：</label>
+                                        <div class="col-xs-9">
+                                            <input type="text" class="form-control" id="updateLinkman" placeholder="联系人">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="updateTel" class="col-xs-3 control-label">联系方式：</label>
+                                        <div class="col-xs-9">
+                                            <input type="text" class="form-control" id="updateTel" placeholder="联系方式">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default"
+                                            data-dismiss="modal">取消
+                                    </button>
+                                    <button type="button" class="btn btn-primary" onclick="updateRecInfoFun()">
+                                        修改
+                                    </button>
+                                </div>
+                            </form>
+                        </div><!-- /.modal-content -->
+                    </div>
+                </div>
+            </div>
+            <div id="bookInfoDetail" class="tab-pane container">
+                <p class="title">图书详情</p>
+                <input type="hidden" id="bookIDDetailSelect">
+                <div style="width:85%;height:85%;border-color: #000;">
+                    <img id="bookDetailSelect" style="display:inline-block;width:350px;height:400px;margin: 0 20px 20px 20px;float:left;">
+                    <div style="display:inline-block;float:right;width:500px">
+                        <p>
+                            <span style="font-size: 24px;font-weight:bold;" id="bookNameSelect"></span>
+                            <a href="#" style="margin-left:40px;font-size:20px;color:#4dc7ec" onclick="insertShopping2()"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>加入购物车</a>
+                        </p>
+                        <p>
+                            <span style="font-size: 16px;margin-right:5px">作者:</span>
+                            <span id="authorNameSelect"></span>
+                        </p>
+                        <p>
+                            <span style="font-size: 16px;margin-right:5px">价格：</span>
+                            <span style="color:#b22222;font-size: 20px;margin-right:10px" id="priceSelect"></span>
+                        </p>
+                        <p>
+                            <span style="font-size: 16px;margin-right:5px">ISBN：</span>
+                            <span id="isdnSelect"></span>
+                        </p>
+                        <p>
+                            <span style="font-size: 16px;margin-right:5px">出版社：</span>
+                            <span id="publishingSelect"></span>
+                        </p>
+                        <p>
+                            <span style="font-size: 16px;margin-right:5px">开本：</span>
+                            <span id="bookSizeSelect"></span>
+                        </p>
+                        <p>
+                            <span style="font-size: 16px;margin-right:5px">总页数：</span>
+                            <span id="pageSelect"></span>
+                        </p>
+                        <p>
+                            <span style="font-size: 16px;margin-right:5px">简介：</span>
+                            <span id="contentIntroSelect"></span>
+                        </p>
+                        <button style="float:right" class="btn-info btn" onclick="bookDetailOut()">返回</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -25,7 +25,7 @@ public class OrderInfoController {
     public @ResponseBody Map<String,Object> insertOrderInfo(@RequestBody OrderInfo orderInfo){
         int i=orderInfoService.insertOrderInfo(orderInfo);
         if(i==1){
-            return Common.getRes(orderInfoService.selectOrderInfo(orderInfo),1000,"success");
+            return Common.getRes(null,1000,"success");
         }else{
             return Common.getRes(null,1002,"data insertion failure");
         }

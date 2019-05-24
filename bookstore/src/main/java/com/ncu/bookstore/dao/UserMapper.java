@@ -11,6 +11,7 @@ public interface UserMapper {
     int insertUser(User user);
     List<User> selectAllUser();
     List<User> selectUser(User user);
+    List<User> selectUserOnly(User user);
     int deleteUser(User user);
     int updateUser(User user);
 }

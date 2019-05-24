@@ -66,6 +66,16 @@ public class UserController {
         }
     }
 
+    @RequestMapping(value="/selectUserOnly",method= RequestMethod.POST)
+    public @ResponseBody Map<String,Object> selectUserOnly(@RequestBody User user) {
+        List<User> userList = userService.selectUserOnly(user);
+        if (!userList.isEmpty()) {
+            return Common.getRes(userList, 1000, "success");
+        } else {
+            return Common.getRes(null, 1002, "no data");
+        }
+    }
+
     @RequestMapping(value="/deleteUser",method= RequestMethod.POST)
     public @ResponseBody Map<String,Object> deleteUser(@RequestBody User user){
         int i=userService.deleteUser(user);

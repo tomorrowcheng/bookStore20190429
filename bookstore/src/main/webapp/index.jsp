@@ -11,6 +11,7 @@
     <script type="text/javascript" src="../js/bootstrap.js"></script>
     <script type="text/javascript" src="../js/bookType.js"></script>
     <script type="text/javascript" src="../js/bookInfo.js"></script>
+    <script type="text/javascript" src="../js/bookDetail.js"></script>
     <script>
         selectAllBookType();
         selectAllBookInfo();
@@ -19,12 +20,12 @@
 </head>
 <body style="background-color: #F5F5D5">
 <div class="navbar navbar-default" style="text-align: center;background-color: #F8D29D">
-    <div class="container">
+    <div class="container" id="navTop">
         <div class="navbar-header">
             <div class="navbar-brand">明天小书屋</div>
         </div>
         <ul class="nav navbar-nav" style="display:inline-block;float:none;font-size:16px">
-            <li class="active"><a href="#allBook" data-toggle="tab">所有图书</a></li>
+            <li class="active" id="allBookLi"><a href="#allBook" data-toggle="tab">所有图书</a></li>
             <li><a href="#newBook" data-toggle="tab">新书速递</a></li>
             <%--<li><a href="#sellRank" data-toggle="tab">销售排行榜</a></li>--%>
         </ul>
@@ -39,7 +40,9 @@
     <div class="row">
         <div class="tab-content">
             <input id="PageContext" type="hidden" value="${pageContext.request.contextPath}" />
-            <%--新书速递--%>
+            <input id="userIDOnly" type="hidden" />
+            <input id="userNameOnly" type="hidden" />
+        <%--新书速递--%>
             <div id="newBook" class="tab-pane container">
                 <div class="row"></div>
             </div>
@@ -62,8 +65,47 @@
                     </div>
                 </div>
             </div>
-            <%--销售排行榜--%>
-            <%--<div id="sellRank" class="tab-pane">销售排行榜</div>--%>
+            <div id="bookInfoDetail" class="tab-pane container">
+                <p class="title">图书详情</p>
+                <div style="width:85%;height:85%;border-color: #000;">
+                    <img id="bookDetailSelect" style="display:inline-block;width:350px;height:400px;margin: 0 20px 20px 20px;float:left;">
+                    <div style="display:inline-block;float:right;width:500px">
+                        <p>
+                            <span style="font-size: 24px;font-weight:bold;" id="bookNameSelect"></span>
+                            <a href="#" style="margin-left:40px;font-size:20px;color:#4dc7ec" onclick="log()"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>加入购物车</a>
+                        </p>
+                        <p>
+                            <span style="font-size: 16px;margin-right:5px">作者:</span>
+                            <span id="authorNameSelect"></span>
+                        </p>
+                        <p>
+                            <span style="font-size: 16px;margin-right:5px">价格：</span>
+                            <span style="color:#b22222;font-size: 20px;margin-right:10px" id="priceSelect"></span>
+                        </p>
+                        <p>
+                            <span style="font-size: 16px;margin-right:5px">ISBN：</span>
+                            <span id="isdnSelect"></span>
+                        </p>
+                        <p>
+                            <span style="font-size: 16px;margin-right:5px">出版社：</span>
+                            <span id="publishingSelect"></span>
+                        </p>
+                        <p>
+                            <span style="font-size: 16px;margin-right:5px">开本：</span>
+                            <span id="bookSizeSelect"></span>
+                        </p>
+                        <p>
+                            <span style="font-size: 16px;margin-right:5px">总页数：</span>
+                            <span id="pageSelect"></span>
+                        </p>
+                        <p>
+                            <span style="font-size: 16px;margin-right:5px">简介：</span>
+                            <span id="contentIntroSelect"></span>
+                        </p>
+                        <button style="float:right" class="btn-info btn" onclick="bookDetailOut()">返回</button>
+                    </div>
+                </div>
+            </div>
         </div>
    </div>
     <%--模态框--%>
@@ -97,7 +139,7 @@
                         <button type="button" class="btn btn-default"
                                 data-dismiss="modal">返回
                         </button>
-                        <button type="button" class="btn btn-primary" onclick="">
+                        <button type="button" class="btn btn-primary" onclick="userLoginFun()">
                             登录
                         </button>
                     </div>
@@ -137,42 +179,42 @@
                                 <input type="password" class="form-control" id="passwordAdd" placeholder="密码">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="passwordAddAgain" class="col-xs-3 control-label">确认密码：</label>
-                            <div class="col-xs-9">
-                                <input type="password" class="form-control" id="passwordAddAgain" placeholder="确认密码">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="phoneNumber" class="col-xs-3 control-label">联系方式：</label>
-                            <div class="col-xs-9">
-                                <input type="text" class="form-control" id="phoneNumber" placeholder="联系方式">
-                            </div>
-                        </div>
+                        <%--<div class="form-group">--%>
+                            <%--<label for="passwordAddAgain" class="col-xs-3 control-label">确认密码：</label>--%>
+                            <%--<div class="col-xs-9">--%>
+                                <%--<input type="password" class="form-control" id="passwordAddAgain" placeholder="确认密码">--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                        <%--<div class="form-group">--%>
+                            <%--<label for="phoneNumber" class="col-xs-3 control-label">联系方式：</label>--%>
+                            <%--<div class="col-xs-9">--%>
+                                <%--<input type="text" class="form-control" id="phoneNumber" placeholder="联系方式">--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
                         <div class="form-group">
                             <label for="birthday" class="col-xs-3 control-label">出生日期：</label>
-                            <div class="col-xs-3">
+                            <div class="col-xs-4">
                                 <input type="date" class="form-control" id="birthday">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="postcode" class="col-xs-3 control-label">邮编 ：</label>
-                            <div class="col-xs-9">
-                                <input type="text" class="form-control" id="postcode" placeholder="邮编">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="address" class="col-xs-3 control-label">收货地址：</label>
-                            <div class="col-xs-9">
-                                <input type="text" class="form-control" id="address" placeholder="收货地址">
-                            </div>
-                        </div>
+                        <%--<div class="form-group">--%>
+                            <%--<label for="postcode" class="col-xs-3 control-label">邮编 ：</label>--%>
+                            <%--<div class="col-xs-9">--%>
+                                <%--<input type="text" class="form-control" id="postcode" placeholder="邮编">--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                        <%--<div class="form-group">--%>
+                            <%--<label for="address" class="col-xs-3 control-label">收货地址：</label>--%>
+                            <%--<div class="col-xs-9">--%>
+                                <%--<input type="text" class="form-control" id="address" placeholder="收货地址">--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default"
                                 data-dismiss="modal">返回
                         </button>
-                        <button type="button" class="btn btn-primary" onclick="">
+                        <button type="button" class="btn btn-primary" onclick="registerFun1()">
                             注册
                         </button>
                     </div>

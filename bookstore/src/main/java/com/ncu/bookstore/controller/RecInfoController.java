@@ -35,7 +35,7 @@ public class RecInfoController {
     public @ResponseBody Map<String,Object> deleteRecInfo(@RequestBody RecInfo recInfo){
         int i=recInfoService.deleteRecInfo(recInfo);
         if(i==1){
-            return Common.getRes(null,1000,"success");
+            return Common.getRes(recInfoService.selectRecInfo(recInfo),1000,"success");
         }else{
             return Common.getRes(null,1002,"data deletion failure");
         }

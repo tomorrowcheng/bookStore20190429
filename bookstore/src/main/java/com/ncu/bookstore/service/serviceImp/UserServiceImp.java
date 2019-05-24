@@ -32,6 +32,11 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    public List<User> selectUserOnly(User user) {
+        return userMapper.selectUserOnly(user);
+    }
+
+    @Override
     public int deleteUser(User user) {
         return userMapper.deleteUser(user);
     }

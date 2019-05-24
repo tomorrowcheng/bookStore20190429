@@ -17,6 +17,10 @@
         </collection>
     </resultMap>
 
+    <select id="selectUserOnly" resultMap="User">
+        select * from users where userName=#{userName, jdbcType = VARCHAR} or userID=#{userID,jdbcType=INTEGER}
+    </select>
+
     <select id="selectAllUser" resultMap="User">
         select * from users,rec_info where users.userID=rec_info.userID
     </select>

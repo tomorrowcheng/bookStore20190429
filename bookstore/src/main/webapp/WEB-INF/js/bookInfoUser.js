@@ -3,7 +3,6 @@ var divsm2='<div class="col-sm-2">'+'<div class="thumbnail">';
 var divsm3='<div class="col-sm-3">'+'<div class="thumbnail">';
 var divend='</div>'+'</div>';
 var row='<div class="row">'+'</div>';
-var shopCart='<a style="float:right" href="#" onclick="log()">'+'<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>'+"&nbsp;&nbsp;购物车"+'</a>';
 function selectAllBookInfo(){
     $("#selectBookName").show();
     $.ajax({
@@ -19,6 +18,7 @@ function selectAllBookInfo(){
                 var price=data.data[i].price;
                 var bookName=data.data[i].bookName;
                 var bookID=data.data[i].bookID;
+                var shopCart='<a style="float:right" href="#" onclick="insertShopping('+bookID+')">'+'<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>'+"&nbsp;&nbsp;购物车"+'</a>';
                 //var authorName=data.data[i].authors.authorName;
                 // var img='<img src="'+picture+'" alt="'+bookName+'" style="width:195px;height:210px">';
                 // var title='<h4 style="margin-top:5px;margin-bottom:5px;font-weight:bold">'+bookName+'</h4>';
@@ -52,6 +52,7 @@ function selectBookInfoByTypeID(typeID){
                 var price=data.data[i].price;
                 var bookName=data.data[i].bookName;
                 var bookID=data.data[i].bookID;
+                var shopCart='<a style="float:right" href="#" onclick="insertShopping('+bookID+')">'+'<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>'+"&nbsp;&nbsp;购物车"+'</a>';
                 var img='<img src="'+picture+'" alt="'+bookName+'" style="width:130px;height:170px" onclick="bookDetailByBookID('+bookID+')">';
                 var title='<h5 style="margin-top:5px;margin-bottom:5px;font-weight:bold">'+bookName+'</h5>';
                 var priceSpan='<p style="margin:0;color:#b22222">'+'<span>'+"价格："+'</span>'+price+"￥"+shopCart+'</p>';
@@ -75,6 +76,7 @@ function selectNewBookInfo(){
                 var bookName = data.data[i].bookName;
                 var bookID=data.data[i].bookID;
                 var authorName=data.data[i].authors.authorName;
+                var shopCart='<a style="float:right" href="#" onclick="insertShopping('+bookID+')">'+'<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>'+"&nbsp;&nbsp;购物车"+'</a>';
                 var img='<img src="'+picture+'" alt="'+bookName+'" style="width:180px;height:195px" onclick="bookDetailByBookID('+bookID+')">';
                 var title='<h4 style="margin-top:5px;margin-bottom:5px;font-weight:bold">'+bookName+'</h4>';
                 var author='<p style="margin:0">'+'<span>'+"作者:"+'</span>'+authorName+'</p>';
@@ -103,6 +105,7 @@ function selectBookByName(){
                 var price=data.data[i].price;
                 var bookName=data.data[i].bookName;
                 var bookID=data.data[i].bookID;
+                var shopCart='<a style="float:right" href="#" onclick="insertShopping('+bookID+')">'+'<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>'+"&nbsp;&nbsp;购物车"+'</a>';
                 var img='<img src="'+picture+'" alt="'+bookName+'" style="width:130px;height:160px" onclick="bookDetailByBookID('+bookID+')">';
                 var title='<h5 style="margin-top:5px;margin-bottom:5px;font-weight:bold">'+bookName+'</h5>';
                 var priceSpan='<p style="margin:0;color:#b22222">'+'<span>'+"价格："+'</span>'+price+"￥"+shopCart+'</p>';
@@ -185,9 +188,6 @@ function adminLoginFun(){
             }
         }
     })
-}
-function log(){
-    alert("请先登录图书在线销售系统！")
 }
 function registerFun1(){
     var formData=new FormData();
